@@ -9,6 +9,9 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import com.example.controllers.MaquinaController;
 import com.example.models.Maquina;
 
@@ -54,9 +57,19 @@ public class MaquinasPanel extends JPanel{
         painelInferior.add(btnSalvarAlteracoes);
         this.add(painelInferior, BorderLayout.SOUTH);
 
-
+        btnCadastrarMaquina.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //CRIAR O METODO CADASTRAR
+                //pegar as informaçoes em um formulario
+                //gravar o objeto de maquinas
+                //chamar o controller
+            }
+        });
 
 
         //criar as ActionListener para os botões
+
+
     }
 }

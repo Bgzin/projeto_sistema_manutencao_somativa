@@ -44,7 +44,7 @@ public class MaquinaAPI {
         return maquinas;
     }
 
-    public void PostMaquinas(Maquina maquina) {
+    public static void PostMaquinas(Maquina maquina) {
         //criar um Objeto Json
         JSONObject maquinaObject = new JSONObject();
         maquinaObject.put("id", maquina.getId());

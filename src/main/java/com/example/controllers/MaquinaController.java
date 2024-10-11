@@ -12,6 +12,12 @@ public class MaquinaController {
         this.maquinas = new ArrayList<>();
     }
 
+    //METODO CREATE
+    public void createMaquina( Maquina maquina){
+        MaquinaAPI.PostMaquinas(maquina);
+        this.maquinas.add(maquina);
+    }
+
     //método - crud
     public void adicionarMaquina(Maquina maquina) {
         this.maquinas.add(maquina);
