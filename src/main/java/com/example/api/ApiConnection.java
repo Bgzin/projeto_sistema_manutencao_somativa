@@ -1,7 +1,10 @@
 package com.example.api;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -38,5 +41,33 @@ public class ApiConnection {
         }
     }
 
+    //POST
+    public static void postData(String endPoint, String inputData){
+        try {
+            URL url = new URL(API_URL + endPoint);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("POST");
+            connection.setRequestProperty("Content-Type", "application/json");
+            connection.setRequestProperty("Accept", "application/json");
+            connection.setDoOutput(true);
+
+            try (BufferedWriter bw = new BufferedWriter(
+                    new OutputStreamWriter(connection.getOutputStream(), "UTF-8"))) {
+                bw.write(inputData);
+                bw.flush();
+
+                    }
+                    //verificar status da resposta
+                    int status = connection.getResponseCode();
+                    if (status == HttpURLConnection.HTTP_CREATED) {
+                        System.out.println("POST request created successfully");
+                    } else {
+                        System.out.println("POST request failed with status code " + status);
+                    }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }
